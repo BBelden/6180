@@ -1,0 +1,17 @@
+{
+  "name": "p6",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Benjamin Belden",
+  "license": "GPL-3.0",
+  "description": "",
+  "dependencies": {
+    "ws": "^3.3.1"
+  },
+  "optionalDependencies": {
+    "bufferutil": "^3.0.3"
+  }
+}

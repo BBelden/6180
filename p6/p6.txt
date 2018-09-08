@@ -1,0 +1,48 @@
+I have ports 5907-9
+
+
+                    Software Design and Development
+                            Project 6
+                            Fall 2017
+    
+
+turnin code:  sdd_p6
+
+
+Build both the client and server sides of a web-based app that provides
+your p5 alignment program as a service.  The client side should support 
+drag-and-drop a file of a pair of strings onto a dropzone on a web page.
+
+The client should use websockets to transfer the strings to node-based
+server that runs your alignment program and sends the results back to
+be displayed by the client.
+
+The server should be built using nodejs and should use websockets to
+receive a pair of strings to be aligned.  It should drive a new process
+that executes the alignment program, and feed the strings to it via 
+its stdin, and should capture its stdout, and transfer the result to the
+client running in a browser.
+
+
+To build the project, I will:
+    un-tar your project and put it into a dir
+    cd to the dir containing your project
+    rm -rf p6
+    rm -f  *.o
+    make
+The make step should build your alignment program and do any additional
+setup that your project requires.
+
+
+To run the project:
+    in window:
+        python3 -m http.server --cgi 5994 &   ## use one of my rbutler ports
+        node p6server.js                      ## should use one of your ports
+
+    in a browser:
+        visit location:
+            www.cs.mtsu.edu:5994    # presents me a list of files
+        click to load your page:
+            p6client.html
+        drag a file onto your marked dropzone, and view the results
+    

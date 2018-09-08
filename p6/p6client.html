@@ -1,0 +1,95 @@
+<!-- 
+// Name:        Ben Belden
+// Class ID#:   bpb2v
+// Section:     CSCI 6180-001
+// Assignment:  Lab #6
+// Due:         16:20:00, December 1, 2017
+// Purpose:     Build both the client and server sides of a web-based app that 
+//              provides your p5 alignment program as a service. The client side 
+//              should support drag-and-drop a file of a pair of strings onto a 
+//              dropzone on a web page.
+//              The client should use websockets to transfer the strings to node-
+//              based server that runs your alignment program and sends the results 
+//              back to be displayed by the client.
+//              The server should be built using nodejs and should use websockets 
+//              to receive a pair of strings to be aligned.  It should drive a new 
+//              process that executes the alignment program, and feed the strings 
+//              to it via its stdin, and should capture its stdout, and transfer 
+//              the result to the client running in a browser.
+// Input:       From preformatted file.  
+// Outut:       To website.
+// 
+// File:        p6client.html
+-->
+
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+
+		<style>
+			.dropZone {
+				width: 100%;
+				height: 300px;
+				background-color: #0066cc;
+				border: solid black 2px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-family: garamond;
+				font-weight: bold;
+				font-size: 100px;
+			}
+			.output {
+				font-family: garamond;
+			}
+		</style>
+
+		<script type="text/javascript">
+				var outputZone = null;
+				addEventListener('load', function() { 
+						outputZone = document.getElementById("outputZone");
+				});
+
+				var websocket = new WebSocket("ws://cs.mtsu.edu:5907");
+
+				websocket.onopen = function() { }
+
+				websocket.onmessage = function(event) {
+					var reader = new FileReader();
+					reader.onload = function() {
+						if(outputZone == null) {
+							console.log("Cannot display server response: Page is not loaded yet");	
+						}
+						else { outputZone.innerText += reader.result; }
+					}
+					reader.readAsBinaryString(event.data);
+				}
+
+				function drag_handler(event) { event.preventDefault(); }
+
+				function drop_handler(event) {
+					event.preventDefault();
+					var reader = new FileReader();
+					reader.onload = function(event) {
+						if(websocket.readyState == websocket.OPEN) {
+							outputZone.innerText = "";
+							websocket.send(event.target.result);
+						}
+						else { console.log("ERROR: Websocket is not open"); }
+					}
+					reader.readAsBinaryString(event.dataTransfer.files[0]);
+				}
+		</script>
+
+	</head>
+
+	<body>
+		<div id="dropZone" class="dropZone" ondragenter="drag_handler(event)" 
+		ondragover="drag_handler(event)" ondrop="drop_handler(event)">
+		Drop files here
+		</div>
+		<hr>
+		<div id="outputZone" class="output"></div>
+	</body>
+</html>
+

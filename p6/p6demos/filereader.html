@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style>
+    </style>
+
+    <script>
+    function readFile(e) {
+        var fileList = e.target.files;
+
+        console.log("FL ", fileList);
+        var reader = new FileReader();
+        reader.addEventListener('load', function(e) {
+            var fileContent = e.target.result;
+            console.log(fileContent);
+        });
+        reader.readAsText(fileList[0]);
+    }
+    </script>
+
+</head>
+
+<body>
+
+    <h1>File Reader Demo</h1>
+
+    <div>
+        <input type="file" onchange="readFile(event)" >
+    </div>
+
+</body>
+</html>

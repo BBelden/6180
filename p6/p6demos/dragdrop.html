@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style>
+        #dropzone {
+            width:  400px;
+            height: 200px;
+            border: solid black 3px;
+        }
+        #output {
+            font-family: monospace;
+            font-size:   24px;
+        }
+    </style>
+
+    <script>
+        var dropzone;
+        function initiate() {
+            dropzone = document.getElementById('dropzone');
+            dropzone.addEventListener('dragenter', function(e) {
+                e.preventDefault(); 
+            });
+            dropzone.addEventListener('dragover', function(e) {
+                e.preventDefault();
+            });
+            dropzone.addEventListener('drop', dropped);
+        }
+        function dropped(e) {
+            e.preventDefault();
+            var files = e.dataTransfer.files;
+            var list = '';
+            for (var f=0; f < files.length; f++) {
+                list += 'File: ' + files[f].name + ' ' + files[f].size + '<br>';
+            }
+            dropzone.innerHTML = list;
+        }
+        addEventListener('load', initiate);
+    </script>
+
+</head>
+
+<body>
+
+    <h1>drag / drop demo</h1>
+
+    <div id=dropzone>
+        Drag and Drop Files Here
+    </div>
+
+</body>
+</html>

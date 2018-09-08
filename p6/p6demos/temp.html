@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style>
+        div {
+            background: green;
+        }
+        #howdy {
+            border: 3px solid red;
+        }
+    </style>
+
+    <script>
+        function initiate() {
+            var output = document.getElementById("output");
+            output.innerHTML += "<br/>whatever";
+        }
+        addEventListener("load", initiate);
+    </script>
+
+</head>
+
+<body>
+    <h1>HEADING</h1>
+
+    <div id="howdy">HELLO</div>
+    <br/>
+    <div id="output">OUTPUT</div>
+</body>
+</html>

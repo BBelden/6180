@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style>
+        #dropzone {
+            width:  400px;
+            height: 200px;
+            border: solid black 3px;
+        }
+        #output {
+            font-family: monospace;
+            font-size:   24px;
+        }
+    </style>
+
+    <script>
+        function initiate() {
+            var button = document.getElementById("button");
+            var output = document.getElementById("output");
+            button.onclick = function() {
+                output.innerHTML += "BUTTON CLICKED";
+                console.log("CLICKED");
+            }
+        }
+        addEventListener('load', initiate);
+    </script>
+
+</head>
+
+<body>
+
+    <h1>Alignment Client</h1>
+
+    <div id=dropzone>
+        Drag and Drop Files Here
+    </div>
+
+    <br/> <br/>
+
+    <h2>Alignments appear here:</h2>
+    <div id=output>
+        hi---<br/>world
+    </div>
+
+    <div>
+        <button id="button">ClickMe</button>
+    </div>
+
+</body>
+</html>
