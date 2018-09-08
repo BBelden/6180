@@ -1,0 +1,66 @@
+
+                        Software Design and Development
+                                  Project 4
+                                  Fall 2017
+
+
+turnin code:  sdd_p4
+
+
+Write a PROLOG program that provides the same functionality as p3, i.e. determines
+satisfiability for a set of propositional clauses.
+It must run with gprolog on system64.
+
+Since prolog itself will produce some output, we will make a small addition to the
+output produced by your program.  Instead of producing this:
+
+    1   0
+    3   0
+    2   1
+
+your program should produce this:
+
+    assignment   1   0
+    assignment   3   0
+    assignment   2   1
+
+That way, a sat-checker program can simply search for lines beginning with the
+word assignment, and extract the relevant information.  Please be sure that
+your program spells the word assignment correctly, else the checker will not 
+give you credit for the output.  In the case of unsatisfiability, you still print:
+
+    UNSATISFIABLE
+
+There is also a change to the input.
+The input clauses will not be in a file of DIMACS format; see below.
+
+
+I will run your program by renaming it to P4.pl  and  running it like this:
+
+    prolog < P4IN1
+
+where P4IN1 is a test file that will load your program and run a predicate
+named  sat_with_print  which your program will define in it.  The contents
+of the test file would be something like this:
+
+    consult('P4').
+
+    sat_with_print( [
+        [ 1, 2],
+        [ 2, 3],
+        [-2, 3],
+        [-2,-3]
+    ] ), !.
+
+Note that your program *MUST* contain a predicate named  sat_with_print  that has
+the above signature, i.e. takes one argument which is the set of clauses to check
+for satisfiability.  
+
+Note that the input clauses will be contained as a list of lists in that file
+and NOT in a separate file of DIMACS format.
+
+
+Use turnin to submit just your prolog program, i.e. *no* tar file.
+
+I will test your program by copying your code to a file named P4.pl and running it
+in the manner described above.

@@ -1,0 +1,7 @@
+
+consult('P4').
+
+sat_with_print( [
+    [ 1],
+    [-2]
+] ), !.

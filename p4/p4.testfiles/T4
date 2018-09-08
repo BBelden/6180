@@ -1,0 +1,9 @@
+#!/bin/bash
+
+prolog < P4IN4 |& tee TEMPOUT
+
+echo
+echo RMB UNSAT '****'
+echo
+
+rm -f TEMPOUT

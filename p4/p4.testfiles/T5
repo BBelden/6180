@@ -1,0 +1,8 @@
+#!/bin/bash
+
+prolog < P4IN5 |& tee TEMPOUT
+
+../p4_chksat.py P4IN5 TEMPOUT
+
+echo
+rm -f TEMPOUT
