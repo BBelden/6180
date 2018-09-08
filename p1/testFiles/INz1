@@ -1,0 +1,10 @@
+## hidden layer
+##   weights for 1 neuron providing 2 inputs and 1 bias value
+0 0   0.13  0.84  0.76  # layer 0 neuron 0 ; 2 weights (for 2 inputs) and bias
+
+## output layer
+##   weights for 2 neurons ; 1 input and 1 bias for each
+1 0   0.25  0.49  # layer 1 neuron 0 ; 1 weight (for 1 input) and bias
+1 1   0.44  0.65  # layer 1 neuron 1 ; 1 weight (for 1 input) and bias
+
+inputs  1.0 0.0

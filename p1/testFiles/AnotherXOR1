@@ -1,0 +1,11 @@
+# layer 0
+0 0   54.0  17.0    -8.0  # layer 0 ; neuron 0 ; weights for 2 inputs; bias value
+0 1   14.0  14.0   -20.0  # layer 0 ; neuron 1 ; weights for 2 inputs; bias value
+
+# layer 1
+1 0   92.0 -98.0   -48.0  # layer 1 ; neuron 0
+
+inputs  0.0 0.0  # very tiny e-21
+# inputs  0.0 1.0  # 1.0
+# inputs  1.0 0.0  # 1.0
+# inputs  1.0 1.0  # very tiny e-24

@@ -1,0 +1,14 @@
+# layer 0
+0 0   1.0  1.0  1.0  # layer 0 ; neuron 0 ; weights for 2 inputs; bias value
+0 1   1.0  1.0  1.0  # layer 0 ; neuron 1 ; weights for 2 inputs; bias value
+
+# layer 1
+1 0   1.0  1.0  1.0
+1 1   1.0  1.0  1.0
+
+## output layer
+2 0   1.0  1.0  1.0
+2 1   1.0  1.0  1.0
+2 2   1.0  1.0  1.0
+
+inputs  1.0 1.0

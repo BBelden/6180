@@ -1,0 +1,52 @@
+
+                         Software Design and Development
+                                 CSCI 6180
+                                 Fall 2017
+
+
+turnin_code:  sdd_p1
+
+
+Write a program that reads a file whose name is the single command-line
+argument.  The file contains a description of a multi-layer neural network.
+Build the described network and perform forward propagation through all
+layers and then print the outputs of the neurons of the last layer.
+
+An annotated example file is in p1IN0.
+
+Our description file does not tell which activation/transfer function
+should be used for each neuron.  We will use the simple sigmoid.
+
+https://en.wikipedia.org/wiki/Activation_function
+sigmoid = Logistic function
+f(x) = 1 / (1 + e^(-x))
+
+
+Use turnin to submit a tar file containing all of your project files,
+including a makefile that will build the executable program which MUST
+be named p1.
+
+To build the project, I will cd to my directory containing your files
+and simply type:
+
+    rm -rf p1
+    rm -f *.o
+    make
+
+
+all NNs are fully connected, including from inputs
+bias value - connects to the individual neuron
+left: x1*w1 + x2*w2
+right: bias + left
+out: sigmoid(R)
+for p1IN0: 
+	left: 1.0*1.0 + 1.0*1.0 = 2.0
+	right: 1.0 + 2.0
+	out: sigmoid(3.0)
+
+
+
+
+
+
+
