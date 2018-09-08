@@ -1,0 +1,92 @@
+
+                        Software Design and Development
+                                  Project 3
+                                  Fall 2017
+
+
+turnin code:  sdd_p3
+
+Write a program that determines satisfiability for a set of propositional
+clauses.  In the absence of an alternative approach that you prefer, use
+the DPLL algorithm described below.
+
+We will prefer correct execution over performance, but performance should
+not be totally ignored.
+
+The program should have one command-line argument which is the name of a
+file of clauses to read.  That file will be in the format described by the
+DIMACS standard for CNF clauses.
+
+
+For an unsatisfiable set of clauses, print:
+
+    UNSATISFIABLE
+
+
+For a satisfiable set, print the set of assignments to variables that make
+the set of clauses all true.  Do NOT print literals and assignments, but
+print individual variables and their assignments.  If your algorithm does
+not assign a value to a variable, then you do not have to print that one.
+
+Print 1 for true and 0 for false.
+
+For example, given this set of clauses:
+
+    1 2 3 0
+    2 3 -4 5 0
+    -3 -4 -6 0
+
+a valid sat solver might print the following (withOUT the ## and comments):
+
+    1   0   ## no obvious effect
+    3   0   ## satisfies third clause where -3 will have value 1
+    2   1   ## satisfies first and second clause
+
+This output will be examined by a checker program to make sure that
+satisfiablity is indeed determined, so be sure the format is correct.
+
+
+Hint:  If you use python and need to copy clauses at levels of recursion, it may
+be safest to use copy.deepcopy just to make sure all substructures are copied.
+
+----------------
+
+THE DPLL ALGORITHM
+
+Note that what is described here is a recursive implementation of depth-first
+search.  You are not required to use this algorithm, but may accomplish the
+task in any way that you prefer.
+
+
+The input to the algorithm is a set of clauses.
+
+1.  If the clause set is empty, return "success"
+2.  If the clause set contains an empty clause, then return "failure"
+3.  If the clause set contains a unit clause (i.e. a single literal)
+        do unit propagation (below) starting with the literal in this clause; 
+        call DPLL recursively on the simplified clause set
+4.  Otherwise: choose a variable u heuristically
+        4.a.  If DPLL(clauses[u=T]) succeeds, return "success"
+        4.b.  Otherwise: return the result of DPLL(clauses[u=F])
+Above, DPLL(clauses[u=T]) means call DPLL recursively with variable
+u instantiated to have value True.
+
+UNIT PROPAGATION
+
+while there is a unit clause in the clause set:
+    let L = the literal in the unit clause       # assign it True
+    remove every clause containing L             # they are all true now
+    for every clause containing -L:              # false lits
+        remove the -L literal from that clause   # remove false lits
+
+----------------
+
+Use turnin to submit a tar file containing all of your project files, including
+a makefile that will build the executable program which MUST be named p3.
+
+To build the project, I will cd to my directory containing your files and
+simply type:
+
+    rm -rf p3
+    rm -f *.o
+    make

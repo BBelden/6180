@@ -1,0 +1,44 @@
+1 2 3
+-1 -2 -3
+1 2 4
+2 4 6
+-4 5 6
+
+--------------------------------
+
+2 Choices:  (referencing literal one, n cluase 1)
+
+Setting 1 to True and False
+
+If 1 is true (new state):
+-2 -3
+2 4 6
+-4 5 6
+
+  Either -2 will be true or false:
+  If -2 == True:
+  -3
+  -4 5 6
+  If -2 == false:
+  4 6
+  -4 5 6
+
+    if 4 == true:
+    5 6
+
+      if 5 == true:
+        empty set of clauses (satisfiability here if this happens) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+    if 4 == false:
+    6
+
+    
+
+
+If 1 is false (new state):
+2 3
+2 4
+2 4 6
+-4 5 6
+
+
