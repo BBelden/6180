@@ -1,0 +1,14 @@
+
+# example from the advanced web page
+
+cat > tempin <<EOF
+GAATTCAGTTA
+GGATCGA
+EOF
+
+./$1 +2 -1 -2 < tempin
+rm -f tempin
+
+echo "RMB:   GAATTCAGTTA"
+echo "RMB:   GGA_TC_G__A"
+## echo "RMB:   GGAT_C_G__A"
